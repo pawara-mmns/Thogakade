@@ -5,7 +5,7 @@ import model.dto.ItemDTO;
 
 public interface ItemService {
 
-    void addItemDetails(String itemName, String itemCode, double itemPrice, int itemQuantity);
+    void addItemDetails(String itemCode, String description, String PackSize, double unitPrice, int qtyOnHand);
 
     void deleteItemDetails(String itemCode);
 
