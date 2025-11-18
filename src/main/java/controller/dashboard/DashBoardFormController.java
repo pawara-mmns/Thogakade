@@ -33,7 +33,8 @@ public class DashBoardFormController {
     @FXML
     void btnItemManagementOnAction(ActionEvent event) {
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource(""))));
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/item.fxml"))));
+            stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
