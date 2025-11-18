@@ -13,6 +13,8 @@ public class ItemDTO {
 
     private String description;
 
+    private String PackSize;
+
     private double unitPrice;
 
     private int qtyOnHand;
