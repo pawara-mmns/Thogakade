@@ -1,4 +1,4 @@
 package controller.itemController;
 
-public class ItemService {
+public interface ItemService {
 }
