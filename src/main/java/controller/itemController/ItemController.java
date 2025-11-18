@@ -11,8 +11,26 @@ import java.sql.SQLException;
 
 public class ItemController implements ItemService{
     @Override
-    public void addItemDetails(String itemName, String itemCode, double itemPrice, int itemQuantity) {
+    public void addItemDetails(String itemCode, String description, String PackSize, double unitPrice, int qtyOnHand) {
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
 
+            String SQL = "INSERT INTO item VALUES(?, ?, ?, ?, ?)";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+
+            preparedStatement.setObject(1, itemCode);
+            preparedStatement.setObject(2, description);
+            preparedStatement.setObject(3, PackSize);
+            preparedStatement.setObject(4, unitPrice);
+            preparedStatement.setObject(5, qtyOnHand);
+
+            preparedStatement.executeUpdate();
+
+        } catch (
+                SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
