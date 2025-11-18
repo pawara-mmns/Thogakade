@@ -64,6 +64,14 @@ public class ItemFormController implements Initializable {
     colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
     colQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
     loadAllItems();
+
+    //set selected row to the fields
+    tblItemView.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValues) -> {
+        if (newValues!= null) {
+            setSelectedValue(newValues);
+        }
+    });
+
     }
 
     @FXML
@@ -73,7 +81,7 @@ public class ItemFormController implements Initializable {
 
     @FXML
     void btnClearOnAction(ActionEvent event) {
-
+        clearFields();
     }
 
     @FXML
@@ -93,4 +101,25 @@ public class ItemFormController implements Initializable {
         itemDTOS.clear();
         tblItemView.setItems(itemService.getAllItemDetails());
     }
+    //set selected row data to the fields
+    private void setSelectedValue(ItemDTO selectedValue){
+        if(selectedValue == null){
+            clearFields();
+            return;
+        }
+        txtItemCode.setText(selectedValue.getItemCode());
+        txtDescription.setText(selectedValue.getDescription());
+        txtPackSize.setText(selectedValue.getPackSize());
+        txtUnitPrice.setText(String.valueOf(selectedValue.getUnitPrice()));
+        txtQtyOnHand.setText(String.valueOf(selectedValue.getQtyOnHand()));
+    }
+    //clear all fields method
+    private void clearFields(){
+        txtItemCode.clear();
+        txtDescription.clear();
+        txtPackSize.clear();
+        txtUnitPrice.clear();
+        txtQtyOnHand.clear();
+    }
+
 }
