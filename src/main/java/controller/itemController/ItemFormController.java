@@ -95,6 +95,9 @@ public class ItemFormController implements Initializable {
 
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
+        itemService.deleteItemDetails(txtItemCode.getText());
+        clearFields();
+        loadAllItems();
 
     }
 

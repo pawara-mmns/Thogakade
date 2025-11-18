@@ -36,6 +36,17 @@ public class ItemController implements ItemService{
 
     @Override
     public void deleteItemDetails(String itemCode) {
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            PreparedStatement pstm = connection.prepareStatement("DELETE FROM item WHERE ItemCode = ?");
+
+            pstm.setObject(1,itemCode);
+            pstm.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 
