@@ -1,12 +1,24 @@
 package controller.itemController;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import model.dto.ItemDTO;
 
-public class ItemFormController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class ItemFormController implements Initializable {
+
+    ItemService itemService = new ItemController();
+
+    ObservableList<ItemDTO> itemDTOS = FXCollections.observableArrayList();
 
     @FXML
     private TableColumn<?, ?> colDescription;
@@ -24,7 +36,7 @@ public class ItemFormController {
     private TableColumn<?, ?> colitemCode;
 
     @FXML
-    private TableView<?> tblItemView;
+    private TableView<ItemDTO> tblItemView;
 
     @FXML
     private TextField txtDescription;
@@ -40,6 +52,19 @@ public class ItemFormController {
 
     @FXML
     private TextField txtUnitPrice;
+
+    //--------------------------------------Initialize method------------------------------------
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+    //load table  columns
+    colitemCode.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
+    colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+    colPackSize.setCellValueFactory(new PropertyValueFactory<>("packSize"));
+    colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+    colQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
+    loadAllItems();
+    }
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
@@ -61,4 +86,11 @@ public class ItemFormController {
 
     }
 
+
+    //--------------------------------------All methods------------------------------------
+    private void loadAllItems(){
+
+        itemDTOS.clear();
+        tblItemView.setItems(itemService.getAllItemDetails());
+    }
 }
