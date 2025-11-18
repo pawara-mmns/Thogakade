@@ -9,7 +9,7 @@ public interface ItemService {
 
     void deleteItemDetails(String itemCode);
 
-    void updateItemDetails(String itemName, String itemCode, double itemPrice, int itemQuantity);
+    void updateItemDetails(String itemCode, String description, String PackSize, double unitPrice, int qtyOnHand);
 
     ObservableList<ItemDTO> getAllItemDetails();
 }
