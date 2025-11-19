@@ -10,7 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.dto.ItemDTO;
-import service.ItemControllerImpl;
+import service.impl.ItemControllerImpl;
 import service.ItemService;
 
 import java.net.URL;

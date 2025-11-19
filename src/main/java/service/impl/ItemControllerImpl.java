@@ -1,18 +1,17 @@
-package service;
+package service.impl;
 
-import db.DBConnection;
 import javafx.collections.ObservableList;
 import model.dto.ItemDTO;
 import repository.ItemRepository;
+import repository.impl.ItemRepositoryImpl;
+import service.ItemService;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ItemControllerImpl implements ItemService {
 
-    ItemRepository itemRepository = new ItemRepository();
+    ItemRepository itemRepository = new ItemRepositoryImpl();
 
     @Override
     public void addItemDetails(String itemCode, String description, String PackSize, double unitPrice, int qtyOnHand) {

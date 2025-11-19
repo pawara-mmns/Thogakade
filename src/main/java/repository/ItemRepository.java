@@ -1,75 +1,16 @@
 package repository;
 
-import db.DBConnection;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ItemRepository {
+public interface ItemRepository {
 
-    public ResultSet getAllItems() throws SQLException {
+    void addItem(String itemCode, String description, String PackSize, double unitPrice, int qtyOnHand);
 
-        Connection connection = DBConnection.getInstance().getConnection();
-        String SQL = "SELECT * FROM item";
-        PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-        return preparedStatement.executeQuery();
+    void deleteItem(String itemCode);
 
+    void updateItem(String itemCode, String description, String PackSize, double unitPrice, int qtyOnHand);
 
-    }
-    public void addItem(String itemCode, String description, String PackSize, double unitPrice, int qtyOnHand) {
-        try {
-            Connection connection = DBConnection.getInstance().getConnection();
+    ResultSet getAllItems () throws SQLException;
 
-            String SQL = "INSERT INTO item VALUES(?, ?, ?, ?, ?)";
-
-            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-
-            preparedStatement.setObject(1, itemCode);
-            preparedStatement.setObject(2, description);
-            preparedStatement.setObject(3, PackSize);
-            preparedStatement.setObject(4, unitPrice);
-            preparedStatement.setObject(5, qtyOnHand);
-
-            preparedStatement.executeUpdate();
-
-        } catch (
-                SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    public void deleteItem(String itemCode){
-        try {
-            Connection connection = DBConnection.getInstance().getConnection();
-            PreparedStatement pstm = connection.prepareStatement("DELETE FROM item WHERE ItemCode = ?");
-
-            pstm.setObject(1,itemCode);
-            pstm.executeUpdate();
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    public void updateItem(String itemCode, String description, String PackSize, double unitPrice, int qtyOnHand) {
-        try {
-            Connection connection = DBConnection.getInstance().getConnection();
-
-            String SQL = "UPDATE item SET Description = ?, PackSize = ?, UnitPrice = ?, QtyOnHand = ? WHERE ItemCode = ?";
-
-            PreparedStatement preparedStatement = connection.prepareStatement(SQL);
-
-            preparedStatement.setObject(1, description);
-            preparedStatement.setObject(2, PackSize);
-            preparedStatement.setObject(3, unitPrice);
-            preparedStatement.setObject(4, qtyOnHand);
-            preparedStatement.setObject(5, itemCode);
-
-            preparedStatement.executeUpdate();
-
-        } catch (
-                SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
 }
