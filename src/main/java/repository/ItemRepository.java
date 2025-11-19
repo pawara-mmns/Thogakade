@@ -39,5 +39,17 @@ public class ItemRepository {
             throw new RuntimeException(e);
         }
     }
+    public void deleteItem(String itemCode){
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            PreparedStatement pstm = connection.prepareStatement("DELETE FROM item WHERE ItemCode = ?");
+
+            pstm.setObject(1,itemCode);
+            pstm.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }
