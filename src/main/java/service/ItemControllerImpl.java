@@ -30,7 +30,7 @@ public class ItemControllerImpl implements ItemService {
 
     @Override
     public void updateItemDetails(String itemCode, String description, String PackSize, double unitPrice, int qtyOnHand) {
-
+        itemRepository.updateItem(itemCode,description,PackSize,unitPrice,qtyOnHand);
 
     }
 
