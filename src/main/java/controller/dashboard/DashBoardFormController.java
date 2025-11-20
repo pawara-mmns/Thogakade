@@ -27,6 +27,12 @@ public class DashBoardFormController {
 
     @FXML
     void btnCustoemerManagementOnAction(ActionEvent event) {
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/customer.fxml"))));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
