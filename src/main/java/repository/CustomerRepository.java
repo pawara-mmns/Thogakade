@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 public interface CustomerRepository {
 
-    void addCustomer();
+    void addCustomer(String custID, String custTitle, String custName, String dob, double salary, String custAddress, String city, String province, String postalCode);
 
     void deleteCustomer();
 

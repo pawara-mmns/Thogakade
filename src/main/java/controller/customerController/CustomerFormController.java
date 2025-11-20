@@ -14,6 +14,8 @@ import service.CustomerService;
 import service.impl.CustomerServiceImpl;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class CustomerFormController implements Initializable {
@@ -103,6 +105,21 @@ public class CustomerFormController implements Initializable {
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
+
+       String id = txtCustomerId.getText();
+       String title = txtCustomerTitle.getText();
+       String name = txtName.getText();
+       LocalDate dob = LocalDate.parse(txtDob.getText());
+       Double salary = Double.valueOf(txtSalary.getText());
+       String address =  txtAddress.getText();
+       String city = txtCity.getText();
+       String  province = txtProvince.getText();
+       String postalCode = txtPostelCode.getText();
+
+       customerService.addCustomer(id, title, name, String.valueOf(dob), salary, address, city, province, postalCode);
+       clearFields();
+       loadAllItems();
+
 
     }
 

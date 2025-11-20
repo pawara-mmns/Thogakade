@@ -14,7 +14,9 @@ public class CustomerServiceImpl implements CustomerService {
     CustomerRepository customerRepository = new CustomerRepositoryImpl();
 
     @Override
-    public void addCustomer() {
+    public void addCustomer(String custID, String custTitle, String custName, String dob, double salary, String custAddress, String city, String province, String postalCode) {
+
+            customerRepository.addCustomer(custID, custTitle, custName, dob, salary, custAddress, city, province, postalCode);
 
     }
 
