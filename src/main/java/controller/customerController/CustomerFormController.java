@@ -93,6 +93,12 @@ public class CustomerFormController implements Initializable {
         loadAllItems();
 
 
+        tblViewCustomers.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValues) -> {
+            if (newValues!= null) {
+                setSelectedValue(newValues);
+            }
+        });
+
     }
 
     @FXML
@@ -121,6 +127,25 @@ public class CustomerFormController implements Initializable {
         tblViewCustomers.setItems(customerService.getAllCustomers());
     }
 
+    private void setSelectedValue(CustomerDTO selectedValue){
+        if(selectedValue == null){
+            clearFields();
+            return;
+        }
+        txtCustomerId.setText(selectedValue.getCustomerId());
+        txtCustomerTitle.setText(selectedValue.getTitle());
+        txtName.setText(selectedValue.getName());
+        txtDob.setText(String.valueOf(selectedValue.getDateOfBirth()));
+        txtSalary.setText(String.valueOf(selectedValue.getSalary()));
+        txtAddress.setText(selectedValue.getAddress());
+        txtCity.setText(selectedValue.getCity());
+        txtProvince.setText(selectedValue.getProvince());
+        txtPostelCode.setText(selectedValue.getPostalCode());
+
+    }
+    private void clearFields(){
+
+    }
 
 
 }
