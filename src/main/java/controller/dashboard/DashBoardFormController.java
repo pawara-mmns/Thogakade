@@ -30,6 +30,8 @@ public class DashBoardFormController {
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/customer.fxml"))));
             stage.show();
+            stage.setTitle("Customer Management");
+            stage.setResizable(false);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -41,6 +43,8 @@ public class DashBoardFormController {
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/item.fxml"))));
             stage.show();
+            stage.setTitle("Item Management");
+            stage.setResizable(false);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -51,6 +55,7 @@ public class DashBoardFormController {
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/placeOrder.fxml"))));
             stage.setTitle("Place Order");
+            stage.setResizable(false);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
