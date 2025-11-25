@@ -8,7 +8,6 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="613.0" prefWidth="911.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.itemController.ItemFormController">
    <children>
       <Text layoutX="343.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item Management">
@@ -30,9 +29,10 @@
       <TextField fx:id="txtPackSize" layoutX="571.0" layoutY="101.0" prefHeight="25.0" prefWidth="168.0" promptText="PackSize" />
       <TextField fx:id="txtUnitPrice" layoutX="173.0" layoutY="146.0" prefHeight="25.0" prefWidth="168.0" promptText="UnitPrice" />
       <TextField fx:id="txtQtyOnHand" layoutX="371.0" layoutY="146.0" prefHeight="25.0" prefWidth="168.0" promptText="QtyOnHand" />
-      <Button layoutX="265.0" layoutY="198.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="25.0" prefWidth="83.0" text="ADD" />
-      <Button layoutX="365.0" layoutY="198.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="25.0" prefWidth="83.0" text="UPDATE" />
-      <Button layoutX="464.0" layoutY="198.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="25.0" prefWidth="83.0" text="DELETE" />
-      <Button layoutX="563.0" layoutY="198.0" mnemonicParsing="false" onAction="#btnClearOnAction" prefHeight="25.0" prefWidth="83.0" text="CLEAR" />
+      <Button layoutX="215.0" layoutY="199.0" mnemonicParsing="false" onAction="#btnAddOnAction" prefHeight="25.0" prefWidth="83.0" text="ADD" />
+      <Button layoutX="315.0" layoutY="199.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="25.0" prefWidth="83.0" text="UPDATE" />
+      <Button layoutX="414.0" layoutY="199.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="25.0" prefWidth="83.0" text="DELETE" />
+      <Button layoutX="513.0" layoutY="199.0" mnemonicParsing="false" onAction="#btnClearOnAction" prefHeight="25.0" prefWidth="83.0" text="CLEAR" />
+      <Button layoutX="612.0" layoutY="199.0" mnemonicParsing="false" onAction="#btnSearchOnAction" prefHeight="25.0" prefWidth="83.0" text="Search" />
    </children>
 </AnchorPane>
