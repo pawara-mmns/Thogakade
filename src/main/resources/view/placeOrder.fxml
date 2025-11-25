@@ -33,10 +33,10 @@
          </font>
       </Text>
       <Line endX="100.0" layoutX="827.0" layoutY="136.0" startX="-119.20001220703125" startY="7.62939453125E-6" />
-      <TextField fx:id="txtCustomerID" layoutX="710.0" layoutY="152.0" onKeyPressed="#txtCustomerIdOnAction" prefHeight="26.0" prefWidth="88.0" promptText="Customer ID" />
+      <TextField fx:id="txtCustomerID" layoutX="710.0" layoutY="152.0" onAction="#txtCustomerIdOnAction" prefHeight="26.0" prefWidth="88.0" promptText="Customer ID" />
       <TextField fx:id="txtName" layoutX="804.0" layoutY="152.0" prefHeight="26.0" prefWidth="126.0" promptText="Name" />
       <Line endX="122.20001220703125" layoutX="808.0" layoutY="199.0" startX="-100.0" />
-      <TextField fx:id="txtItemCode" layoutX="824.0" layoutY="211.0" onKeyPressed="#txtItemCodeOnAction" prefHeight="26.0" prefWidth="105.0" promptText="Item Code" />
+      <TextField fx:id="txtItemCode" layoutX="824.0" layoutY="211.0" onAction="#txtItemCodeOnAction" prefHeight="26.0" prefWidth="105.0" promptText="Item Code" />
       <TextField fx:id="txtDescription" layoutX="708.0" layoutY="246.0" prefHeight="26.0" prefWidth="221.0" promptText="Description" />
       <TextField fx:id="txtUnitPrice" layoutX="708.0" layoutY="284.0" prefHeight="26.0" prefWidth="223.0" promptText="Unit Price" />
       <TextField fx:id="txtQuantity" layoutX="708.0" layoutY="320.0" prefHeight="26.0" prefWidth="222.0" promptText="Quantity" />
