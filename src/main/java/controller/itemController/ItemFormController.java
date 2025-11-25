@@ -95,6 +95,17 @@ public class ItemFormController implements Initializable {
         clearFields();
     }
 
+
+    @FXML
+    void btnSearchOnAction(ActionEvent event) {
+        ItemDTO itemDTO = itemService.searchItemDetails(txtItemCode.getText(), txtDescription.getText());
+        if(itemDTO != null){
+            setSelectedValue(itemDTO);
+        }else {
+            clearFields();
+        }
+    }
+
     @FXML
     void btnDeleteOnAction(ActionEvent event) {
         itemService.deleteItemDetails(txtItemCode.getText());

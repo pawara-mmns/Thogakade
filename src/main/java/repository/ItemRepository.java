@@ -1,5 +1,7 @@
 package repository;
 
+import model.dto.ItemDTO;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -12,5 +14,7 @@ public interface ItemRepository {
     void updateItem(String itemCode, String description, String PackSize, double unitPrice, int qtyOnHand);
 
     ResultSet getAllItems () throws SQLException;
+
+    ResultSet searchItem(String itemCode,String description) throws SQLException;
 
 }

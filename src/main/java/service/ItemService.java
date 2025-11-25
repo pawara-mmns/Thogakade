@@ -12,4 +12,6 @@ public interface ItemService {
     void updateItemDetails(String itemCode, String description, String PackSize, double unitPrice, int qtyOnHand);
 
     ObservableList<ItemDTO> getAllItemDetails();
+
+    ItemDTO  searchItemDetails(String itemCode, String description);
 }

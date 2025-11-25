@@ -1,6 +1,7 @@
 package repository.impl;
 
 import db.DBConnection;
+import model.dto.ItemDTO;
 import repository.ItemRepository;
 
 import java.sql.Connection;
@@ -20,6 +21,19 @@ public class ItemRepositoryImpl implements ItemRepository {
 
 
     }
+
+    @Override
+    public ResultSet searchItem(String itemCode, String description) throws SQLException {
+
+        String SQL = "SELECT * FROM item WHERE ItemCode = ? OR Description = ?";
+
+        Connection connection = DBConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+        preparedStatement.setObject(1,itemCode);
+        preparedStatement.setObject(2,description);
+        return preparedStatement.executeQuery();
+    }
+
     @Override
     public void addItem(String itemCode, String description, String PackSize, double unitPrice, int qtyOnHand) {
         try {
