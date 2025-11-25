@@ -47,10 +47,15 @@ public class DashBoardFormController {
     }
 
     @FXML
-    void btnOrderDetailsManagementOnAction(ActionEvent event) {
-
+    void btnPlaceOrderOnAction(ActionEvent event) {
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/placeOrder.fxml"))));
+            stage.setTitle("Place Order");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        stage.show();
     }
-
     @FXML
     void btnOrderManagementOnAction(ActionEvent event) {
 
