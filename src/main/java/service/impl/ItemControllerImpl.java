@@ -56,4 +56,23 @@ public class ItemControllerImpl implements ItemService {
         }
         return itemDetails;
     }
+
+    @Override
+    public ItemDTO searchItemDetails(String itemCode, String description) {
+
+
+        try {
+            ResultSet resultSet =  itemRepository.searchItem(itemCode, description);
+            resultSet.next();
+            return new ItemDTO(
+                    resultSet.getString("ItemCode"),
+                    resultSet.getString("Description"),
+                    resultSet.getString("PackSize"),
+                    resultSet.getDouble("UnitPrice"),
+                    resultSet.getInt("QtyOnHand")
+            );
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
