@@ -21,12 +21,15 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void deleteCustomer() {
+    public void deleteCustomer(String custID) {
+        customerRepository.deleteCustomer(custID);
 
     }
 
     @Override
-    public void updateCustomer() {
+    public void updateCustomer(String custID, String custTitle, String custName, String dob, double salary, String custAddress, String city, String province, String postalCode) {
+        customerRepository.updateCustomer(custID, custTitle, custName, dob, salary, custAddress, city, province, postalCode);
+
 
     }
 
@@ -57,6 +60,29 @@ public class CustomerServiceImpl implements CustomerService {
             throw new RuntimeException(e);
         }
         return allCustomers;
+
+    }
+
+    @Override
+    public CustomerDTO searchCustomer(String custID, String custName) {
+
+        try {
+            ResultSet resultSet = customerRepository.searchCustomer(custID, custName);
+            resultSet.next();
+            return new CustomerDTO(
+                    resultSet.getString("CustID"),
+                    resultSet.getString("CustTitle"),
+                    resultSet.getString("CustName"),
+                    resultSet.getDate("DOB").toLocalDate(),
+                    resultSet.getDouble("salary"),
+                    resultSet.getString("CustAddress"),
+                    resultSet.getString("City"),
+                    resultSet.getString("Province"),
+                    resultSet.getString("PostalCode")
+            );
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 }

@@ -38,12 +38,44 @@ public class CustomerRepositoryImpl implements CustomerRepository {
     }
 
     @Override
-    public void deleteCustomer() {
+    public void deleteCustomer(String custID) {
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            String SQL = "DELETE FROM customer WHERE CustID = ?";
+            PreparedStatement psTm = connection.prepareStatement(SQL);
+            psTm.setObject(1,custID);
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 
     @Override
-    public void updateCustomer() {
+    public void updateCustomer(String custID, String custTitle, String custName, String dob, double salary, String custAddress, String city, String province, String postalCode) {
+
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            String SQL = "UPDATE customer SET CustTitle = ?, CustName = ?, DOB = ?, salary = ?, CustAddress = ?, City = ?, Province = ?, PostalCode = ? WHERE CustID = ?";
+            PreparedStatement psTm = connection.prepareStatement(SQL);
+
+            psTm.setObject(1,custTitle);
+            psTm.setObject(2,custName);
+            psTm.setObject(3,dob);
+            psTm.setObject(4,salary);
+            psTm.setObject(5,custAddress);
+            psTm.setObject(6,city);
+            psTm.setObject(7,province);
+            psTm.setObject(8,postalCode);
+            psTm.setObject(9,custID);
+
+            psTm.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 
@@ -54,5 +86,17 @@ public class CustomerRepositoryImpl implements CustomerRepository {
         String SQL = "SELECT * FROM customer";
         PreparedStatement preparedStatement = connection.prepareStatement(SQL);
         return preparedStatement.executeQuery();
+    }
+
+    @Override
+    public ResultSet searchCustomer(String custID, String custName) throws SQLException {
+        String SQL = "SELECT * FROM customer WHERE CustID = ? OR CustName = ?";
+
+        Connection connection = DBConnection.getInstance().getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement(SQL);
+        preparedStatement.setObject(1,custID);
+        preparedStatement.setObject(2,custName);
+        return preparedStatement.executeQuery();
+
     }
 }
