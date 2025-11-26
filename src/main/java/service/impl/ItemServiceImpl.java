@@ -9,7 +9,7 @@ import service.ItemService;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ItemControllerImpl implements ItemService {
+public class ItemServiceImpl implements ItemService {
 
     ItemRepository itemRepository = new ItemRepositoryImpl();
 

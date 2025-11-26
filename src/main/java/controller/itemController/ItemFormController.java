@@ -10,7 +10,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.dto.ItemDTO;
-import service.impl.ItemControllerImpl;
+import service.impl.ItemServiceImpl;
 import service.ItemService;
 
 import java.net.URL;
@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 
 public class ItemFormController implements Initializable {
 
-    ItemService itemService = new ItemControllerImpl();
+    ItemService itemService = new ItemServiceImpl();
 
     ObservableList<ItemDTO> itemDTOS = FXCollections.observableArrayList();
 
