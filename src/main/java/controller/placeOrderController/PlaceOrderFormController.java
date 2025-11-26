@@ -7,11 +7,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
+import model.dto.CustomerDTO;
 import model.dto.ItemDTO;
-import repository.ItemRepository;
-import service.ItemService;
-import service.impl.ItemControllerImpl;
+import service.PlaceOrderService;
+import service.impl.PlaceOrderServiceImpl;
 
 public class PlaceOrderFormController {
 
@@ -66,7 +65,8 @@ public class PlaceOrderFormController {
     @FXML
     private TextField txtUnitPrice;
 
-    ItemService itemService = new ItemControllerImpl();
+    PlaceOrderService placeOrderService = new PlaceOrderServiceImpl();
+
 
     @FXML
     void btnAddToCartOnAction(ActionEvent event) {
@@ -80,16 +80,18 @@ public class PlaceOrderFormController {
 
     @FXML
     void txtCustomerIdOnAction(ActionEvent event) {
+
+        CustomerDTO customerDTO = placeOrderService.getCustomer(txtCustomerID.getText());
+        txtName.setText(customerDTO.getName());
+
     }
 
     @FXML
     void txtItemCodeOnAction(ActionEvent event) {
-        ItemDTO itemDTO = itemService.searchItemDetails(txtItemCode.getText(), null);
-        System.out.println(itemDTO);
+        ItemDTO itemDTO = placeOrderService.getItem(txtItemCode.getText());
+//        System.out.println(itemDTO);
         txtDescription.setText(itemDTO.getDescription());
         txtUnitPrice.setText(String.valueOf(itemDTO.getUnitPrice()));
-
-
 
     }
 
